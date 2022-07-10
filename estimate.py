@@ -45,9 +45,11 @@ def predictHeight(height, unit, age):
         elif unit.lower() == "cm":
             convertedHeight = float(height) / 2.54
         elif unit.lower() == "hh":
-            splitHeight = height.split(".")
+            
+            splitHeight = str(height).split(".")
+
             try:
-                convertedHeight = (splitHeight[0]*4) + splitHeight[1]
+                convertedHeight = (int(splitHeight[0])*4) + int(splitHeight[1])
             except:
                 convertedHeight = height*4
         return convertedHeight
@@ -86,11 +88,9 @@ def convertBack(lowHeight, highHeight):
 prediction = predictHeight(values["Current Height"], values["Unit"], values["Current Age"])
 
 try:
-    convertBack(prediction[0], prediction[1])
+    print(convertBack(prediction[0], prediction[1]))
 except:
-    print(prediction)
-else:
-    print(convertBack(prediction[0], prediction[1]))      
+    print(prediction)      
 
 
 # print(predictHeight(values["Current Height"], values["Unit"], values["Current Age"]))
